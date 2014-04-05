@@ -1,0 +1,7 @@
+div class="#{message_owner_side(message)}"
+  strong class="#{message_owner_side(message)}"
+    = message.sender.name + ":"
+  .clear
+  p class="#{message_owner_side(message)}"
+    = message.content
+.clear

@@ -6,5 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 puts 'DEFAULT USERS'
-user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
-puts 'user: ' << user.name
+user = User.find_or_create_by_email({name: 'test user' , role: 'User', email: 'user@test.com', password: 'password', password_confirmation: 'password'})
+puts 'user email: ' << user.email
+puts 'user password: ' << 'password'
+
+puts 'DEFAULT Customer Service'
+user = User.find_or_create_by_email({name: 'test user' , role: 'Customer Service', email: 'service@test.com', password: 'password', password_confirmation: 'password'})
+puts 'service email: ' << user.email
+puts 'service password: ' << 'password'

@@ -1,1 +1,11 @@
-h3 Home
+.authform.well
+  h3 Chat Demo
+
+  - unless login?
+    h4 Please Login before chat.
+  - else
+    h4 Chat with:
+    - User.all.each do |user|
+      - if user.role != current_user.role
+        p
+          = link_to "#{user.name} (#{user.role})", chat_user_path(user)

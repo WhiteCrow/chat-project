@@ -1,0 +1,7 @@
+<% faye_send "/users/#{current_user.id}/chat" do %>
+  //#faye send to other user
+  $('#messages-window').append('<%= j render 'message', message: @message %>')
+<% end %>
+//add to current user
+$('#messages-window').append('<%= j render 'message', message: @message %>')
+$('#message_content').val('');

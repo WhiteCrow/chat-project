@@ -11,6 +11,11 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'slim-rails'
+gem 'faye'
+#gem 'redis'
+#gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem 'thread'
+gem 'thin'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -21,11 +26,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'thin'
   gem 'pry-rails'
-end
-group :production do
-  gem 'unicorn'
 end
 group :test do
   gem 'capybara'

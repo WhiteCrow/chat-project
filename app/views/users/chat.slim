@@ -1,0 +1,21 @@
+.authform
+  h3
+    = raw "You Chating with <i>#{@user.name}.</i>"
+
+  .well#messages-window
+    - @messages.each do |message|
+      = render 'message', message: message
+
+  = form_for(Message.new, :remote => true, :url => chat_user_path(@user), :html => { :method => :post }) do |f|
+    .form-group
+      = f.text_field :content, class: 'form-control'
+    = f.submit 'Send', class: 'button right'
+
+javascript:
+  $(function(){
+    var faye = new Faye.Client('http://localhost:8081/faye');
+
+    faye.subscribe("/users/#{@user.id}/chat", function(data){
+      eval(data)
+    });
+  });
